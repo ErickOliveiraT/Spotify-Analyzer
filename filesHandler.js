@@ -5,11 +5,12 @@ module.exports = {
     async writeStats(data, format) {
         if (format == 'pt-br') {
             data.forEach(element => {
-                element.percentage = parseFloat(element.percentage.toString().replace('.',','));
+                element.percentage = element.percentage.toString().replace('.',',');
             });
         }
         csvWriter = createCsvWriter({
             path: 'stats.csv',
+            fieldDelimiter: ';',
             header: [
                 {id: 'genre', title: 'GENRE'},
                 {id: 'count', title: 'COUNT'},
