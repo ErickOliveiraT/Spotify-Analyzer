@@ -1,4 +1,5 @@
-const requests = require('./requests')
+const requests = require('./requests');
+const fh = require('./filesHandler')
 
 async function analyzeGenres(time_range, considerAll, genresLimit) {
     if (genresLimit > 50) considerAll = true;
@@ -64,9 +65,11 @@ async function analyzeGenres(time_range, considerAll, genresLimit) {
         }
 }
 
+
 analyzeGenres('long_term', false, 5)
 .then((res) => {
     res.forEach((genre) => {
         console.log(genre.genre + ': ' + genre.percentage + '%');
-    })
+    });
+    fh.writeStats(res);
 });

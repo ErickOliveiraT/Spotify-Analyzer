@@ -1,0 +1,26 @@
+{
+  "name": "spotify-analyzer",
+  "version": "1.0.0",
+  "description": "An app to analyse musical taste using spotify web api",
+  "main": "requests.js",
+  "scripts": {
+    "test": "node genres"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErickOliveiraT/Spotify-Analyzer.git"
+  },
+  "keywords": [
+    "spotify"
+  ],
+  "author": "Érick de Oliveira Teixeira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErickOliveiraT/Spotify-Analyzer/issues"
+  },
+  "homepage": "https://github.com/ErickOliveiraT/Spotify-Analyzer#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "csv-writer": "^1.6.0"
+  }
+}
