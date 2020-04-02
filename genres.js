@@ -71,5 +71,5 @@ analyzeGenres('long_term', false, 5)
     res.forEach((genre) => {
         console.log(genre.genre + ': ' + genre.percentage + '%');
     });
-    fh.writeStats(res);
+    fh.writeStats(res, 'pt-br');
 });

@@ -2,7 +2,12 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 module.exports = {
   
-    async writeStats(data) {
+    async writeStats(data, format) {
+        if (format == 'pt-br') {
+            data.forEach(element => {
+                element.percentage = parseFloat(element.percentage.toString().replace('.',','));
+            });
+        }
         csvWriter = createCsvWriter({
             path: 'stats.csv',
             header: [
