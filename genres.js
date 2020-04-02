@@ -1,7 +1,8 @@
 const requests = require('./requests')
 
 async function analyzeGenres(time_range, considerAll, genresLimit) {
-    var fav_artists = undefined;
+    if (genresLimit > 50) considerAll = true;
+    var fav_artists = null;
     try {
         fav_artists = await requests.getArtists(time_range, 50);
     }
@@ -48,14 +49,14 @@ async function analyzeGenres(time_range, considerAll, genresLimit) {
                 stats.push(genreInfo);
             });
             stats.sort((a, b) => (a.count > b.count) ? -1 : 1);
-            let Totaloccurrences = 0;
-            for (let i = 0; i < genresLimit; i++) Totaloccurrences += stats[i].count;
+            let totalOccurrences = 0;
+            for (let i = 0; i < genresLimit; i++) totalOccurrences += stats[i].count;
             let reductedStats = [];
             for (let i = 0; i < genresLimit; i++) {
                 reductedStats.push({
                     genre: stats[i].genre,
                     count: stats[i].count,
-                    percentage: parseFloat(stats[i].count*100/Totaloccurrences).toFixed(2)
+                    percentage: parseFloat(stats[i].count*100/totalOccurrences).toFixed(2)
                 });
             }
 
