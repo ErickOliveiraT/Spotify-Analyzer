@@ -1,5 +1,5 @@
 const axios = require('axios');
-const cred = require('./credentials')
+const cred = require('../credentials')
 
 module.exports = {
 
