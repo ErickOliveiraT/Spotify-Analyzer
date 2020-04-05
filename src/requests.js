@@ -3,14 +3,14 @@ const cred = require('../credentials')
 
 module.exports = {
 
-    async getArtists(time_range, limit) {
+    async getArtists(time_range, limit, token) {
         return new Promise((resolve, reject) => {
             var artists = [];
             var position = 0;
             axios({
                 method: 'get',
                 url: `https://api.spotify.com/v1/me/top/artists?time_range=${time_range}&limit=${limit}`,
-                headers: {'Authorization': cred.token},
+                headers: {'Authorization': 'Bearer '+token},
                 responseType: 'application/json'
             })
             .then(function (response) {
@@ -35,14 +35,14 @@ module.exports = {
         });
     },
     
-    async getTracks(time_range, limit) {
+    async getTracks(time_range, limit, token) {
         return new Promise((resolve, reject) => {
             var tracks = [];
             var position = 0;
             axios({
                 method: 'get',
                 url: `https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=${limit}`,
-                headers: {'Authorization': cred.token},
+                headers: {'Authorization': 'Bearer '+token},
                 responseType: 'application/json'
             })
             .then(function (response) {
@@ -66,12 +66,12 @@ module.exports = {
         });
     },
     
-    async getUserInfo() {
+    async getUserInfo(token) {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'get',
                 url: 'https://api.spotify.com/v1/me',
-                headers: {'Authorization': cred.token},
+                headers: {'Authorization': 'Bearer '+token},
                 responseType: 'application/json'
             })
             .then(function (response) {

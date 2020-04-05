@@ -1,6 +1,9 @@
-let express = require('express')
-let request = require('request')
-let querystring = require('querystring')
+const express = require('express')
+const request = require('request')
+const querystring = require('querystring')
+const stats = require('./stats')
+const fh = require('./filesHandler')
+const path = require('path')
 require('dotenv').config();
 
 let app = express();
@@ -41,10 +44,13 @@ app.get('/callback', function(req, res) {
   })
 });
 
-app.get('/dashboard/:acess_token?', function(req, res) {
+app.get('/dashboard/:acess_token?', async (req, res) => {
   let token = req.query.access_token;
   if(!token) res.status(401).send('No token provided').end();
-  res.status(200).send(token);
+  
+  let userStats = await stats.getStats(token);
+  
+  res.status(200).send(userStats).end();
 });
 
 let port = process.env.PORT;
