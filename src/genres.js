@@ -1,5 +1,4 @@
-const requests = require('./requests');
-const fh = require('./filesHandler')
+const requests = require('./requests')
 
 module.exports = {
     

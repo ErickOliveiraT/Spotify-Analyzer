@@ -2,8 +2,6 @@ const express = require('express')
 const request = require('request')
 const querystring = require('querystring')
 const stats = require('./stats')
-const fh = require('./filesHandler')
-const path = require('path')
 require('dotenv').config();
 
 let app = express();
@@ -53,6 +51,6 @@ app.get('/dashboard/:acess_token?', async (req, res) => {
   res.status(200).send(userStats).end();
 });
 
-let port = process.env.PORT;
+let port = process.env.PORT || 4000;
 app.listen(port);
 console.log(`Listening on port ${port}...`);
