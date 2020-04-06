@@ -14,7 +14,7 @@ module.exports = {
                 let _name = word.charAt(0).toUpperCase();
                 for (let i = 1; i < word.length; i++) _name += word.charAt(i);
                 name += _name; 
-                if (index < words.length) name += ' ';
+                if (index < words.length-1) name += ' ';
             });
         }
         return name;
