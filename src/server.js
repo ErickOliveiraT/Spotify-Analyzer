@@ -48,6 +48,7 @@ app.get('/dashboard/:acess_token?', async (req, res) => {
   
   let userStats = await stats.getStats(token);
   
+  res.set('Content-Type', 'text/plain');
   res.status(200).send(userStats).end();
 });
 
